@@ -5,14 +5,7 @@
  var formattedRole = HTMLheaderRole.replace("%data%", role);
  $("#header").append(formattedName);
  $("#header").append(formattedRole)
- //$("#header").prepend(formattedRole);
- //$("#header").prepend(formattedName);
- /*var email ="is-is2009@hotmail.com";
- var newmail= email.replace("is-is2009@hotmail.com","hanan.saad.h@gmail.com");
 
- console.log(email);
- console.log(newmail);
- */
  var bio = {
  name : "Hanan Saad Alharbi",
       role : "Siebel Software Developer",
@@ -25,21 +18,95 @@
           },
       welcomeMessage: "Hi , I am Hanan",
       skills: ["Programming","Analyzing","Communication"],
-      biopic: ""
+      biopic: "images/fry.jpg"
     //  display: function
 };
+
+var formattedWel = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+$("#header").append(formattedWel);
+
+var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
+$("#header").append(formattedPic);
+
 if (bio.skills.length > 0 ){
 
   $("#header").append(HTMLskillsStart );
-  var formattedSkill = HTMLskills.replace("%data", bio.skills[0]);
+  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
   $("#skills").append(formattedSkill);
-  formattedSkill =HTMLskills.replace("%data",bio.skills[1]);
+  formattedSkill =HTMLskills.replace("%data%",bio.skills[1]);
   $("#skills").append(formattedSkill);
-  formattedSkill =HTMLskills.replace("%data",bio.skills[2]);
+  formattedSkill =HTMLskills.replace("%data%",bio.skills[2]);
   $("#skills").append(formattedSkill);
-  formattedSkill =HTMLskills.replace("%data",bio.skills[3]);
+  formattedSkill =HTMLskills.replace("%data%",bio.skills[3]);
   $("#skills").append(formattedSkill);
 }
+var work = {
+jobs : [
+          {
+        employer: "Systems Engineer",
+        title: "Siebel CRM Developer",
+        location: "Riyadh",
+        dates: "Apr 2016 - Present",
+        description: "Working in Siebel development as CRM developer",
+        //display: function
+          },
+         {
+        employer: "Web Developer",
+        title: "Web Developer",
+        location: "Riyadh",
+        dates: "Mar 2015 - Dec 2015",
+        description: "Front end development in Imar Urban Consultant",
+        //display: function
+         }
+       ]
+       };
+
+
+       for ( job in work.jobs)
+      {
+       $("#workExperience").append(HTMLworkStart);
+       var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+       var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+       var formattedEmployerTitle = formattedEmployer + formattedTitle;
+       var formattedLoc = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+       var formattedDate = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+       var formattedDes = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        $(".work-entry:last").append(formattedEmployerTitle);
+        $(".work-entry:last").append(formattedLoc);
+        $(".work-entry:last").append(formattedDate);
+        $(".work-entry:last").append(formattedDes);
+      }
+
+      var projects = {
+       project: [
+         {
+           title: "Graduation Project",
+           dates: "Jun 2014 - Dec 2014",
+           description: "Development Live Islam hybrid application for iOS, android and windows phone by using PhoneGap.",
+           images: []
+      //  display: function
+         },
+         {
+           title:"Database Project Build",
+           dates: "Jan 2014 - Feb 2014",
+           description: "Oracle database using SQL and PL/SQL.",
+           images: []
+        //display: function
+         }
+       ]
+     };
+
+     for ( proj in projects.project)
+    {
+     $("#projects").append(HTMLprojectStart);
+     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
+    var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
+    var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
+    //var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
+      $("header").append(formattedProjectTitle);
+      $("projects").append(formattedProjectDate);
+      $("projects").append(formattedProjectDes);
+    }
 /*
 var education = {
  schools: [
@@ -89,7 +156,6 @@ var work ={
            description: string
       display: function
     };
-
 var projects = {
   projects: array of objects with
             title: string
