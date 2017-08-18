@@ -73,7 +73,6 @@ jobs : [
         location: "Riyadh",
         dates: "Apr 2016 - Present",
         description: "Working in Siebel development as CRM developer",
-        //display: function
           },
          {
         employer: "Web Developer",
@@ -81,12 +80,11 @@ jobs : [
         location: "Riyadh",
         dates: "Mar 2015 - Dec 2015",
         description: "Front end development in Imar Urban Consultant",
-        //display: function
          }
        ]
        };
 
-
+  function displayWork() {
        for ( job in work.jobs)
       {
        $("#workExperience").append(HTMLworkStart);
@@ -101,6 +99,8 @@ jobs : [
         $(".work-entry:last").append(formattedDate);
         $(".work-entry:last").append(formattedDes);
       }
+};
+displayWork();
 
       var projects = {
        project: [
@@ -108,75 +108,103 @@ jobs : [
            title: "Graduation Project",
            dates: "Jun 2014 - Dec 2014",
            description: "Development Live Islam hybrid application for iOS, android and windows phone by using PhoneGap.",
-           images: []
-      //  display: function
+           images: ["images/phonegap.jpg"]
          },
          {
            title:"Database Project Build",
            dates: "Jan 2014 - Feb 2014",
            description: "Oracle database using SQL and PL/SQL.",
-           images: []
-        //display: function
+           images: ["images/phonegap.jpg"]
          }
        ]
      };
 
      for ( proj in projects.project)
-{
-$("#projects").append(HTMLprojectStart);
-var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
-var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
-var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
-//var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
- $("#projects").append(formattedProjectTitle);
- $("#projects").append(formattedProjectDate);
- $("#projects").append(formattedProjectDes);
-}
+     {
+     $("#projects").append(HTMLprojectStart);
+     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
+     var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
+     var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
+    var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
+      $(".project-entry:last").append(formattedProjectTitle);
+      $(".project-entry:last").append(formattedProjectDate);
+      $(".project-entry:last").append(formattedProjectDes);
+      $(".project-entry:last").append(formattedProjectImag);
+     }
 
-
-
-$("#main").append(internationalizeButton);
+  /*
+  if(projects.projects[project].images.length > 0){
+            for (image in projects.projects[project].images){
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                $(".project-entry:last").append(formattedImage);
+            }
+        }
+        */
+//$("#main").append(internationalizeButton);
 $("#mapDiv").append(googleMap);
-
-displayWork();
-project.display();
-
 var education = {
-"schools": [
-{
-  name: "Imam Muhammed Ibn Saud",
-  location: "Riyadh",
-  degree: "bachelor degree",
-  majors: ["Information Systems"],
-  dates: "2009-2015",
-  url: ""
-},
-{
-  name: "91 High School",
-  location: "Riyadh",
-  degree: "High School",
-  majors: ["Scinece"],
-  dates: "2006-2009",
-  url: ""
+           "schools": [
+        {
+          name: "Imam Muhammed Ibn Saud",
+          location: "Riyadh",
+          degree: "bachelor degree",
+          majors: ["Information Systems"],
+          dates: "2009-2015",
+          url: ""
+        },
+        {
+          name: "91 High School",
+          location: "Riyadh",
+          degree: "High School",
+          majors: ["Scinece"],
+          dates: "2006-2009",
+          url: ""
+        }
+        ],
+        "onlineCourses": [
+        {
+          title: "Siebel Configration Foundation",
+          school: "Oracle",
+          dates: "Nov-2016",
+          url: "string"
+          //display: funcion()
+        },
+        {
+          title: "PL/SQL Foundation",
+          school: "Oracle ",
+          dates: "Jul - 2016",
+          url: ""
+        //display: function
+        }
+        ]
+        }
+
+  function inName(name){
+    name = name.trim().split(" ");
+    console.log(name);
+    name[1] = name[1].toUpperCase();
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+    return name[0] +" "+name[1];
 }
-],
-"onlineCourses": [
-{
-  title: "Siebel Configration Foundation",
-  school: "Oracle",
-  dates: "Nov-2016",
-  url: "string"
-  //display: function
-},
-{
-  title: "PL/SQL Foundation",
-  school: "Oracle ",
-  dates: "Jul - 2016",
-  url: ""
-//display: function
-}
-]
-}
+//$("#header").append(internationalizeButton);
+
+$(document).click(function(Loc){
+    var x=Loc.pageX;
+    var y=Loc.pageY;
+
+    logClicks(x,y);
+});
+
+/*
+        education.display = function (){
+      //    for(var i =0; i < education.shcools.length; i++)
+
+           $("#education").append(HTMLschoolStart);
+           var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", shcool.major[i]);
+              $("#education-entry:last").append(HTMLschoolMajor);
+         }
+
+
 /*
 
 var education = HTMLschoolName.replace("%data%", education.shcools.name);
