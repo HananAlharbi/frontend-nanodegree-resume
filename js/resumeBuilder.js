@@ -3,8 +3,9 @@
  var role = "Siebel Software Developer";
  var formattedName = HTMLheaderName.replace("%data%", name);
  var formattedRole = HTMLheaderRole.replace("%data%", role);
- $("#header").append(formattedName);
- $("#header").append(formattedRole);
+  $("#header").prepend(formattedRole);
+ $("#header").prepend(formattedName);
+
 
  var bio = {
  name : "Hanan Saad Alharbi",
@@ -23,13 +24,13 @@
 };
 //$("#topContacts").append(ContactInfo);
 var ContactInfo = HTMLmobile.replace("%data%", bio.contacts.mobile);
-$("#header #topContacts").append(ContactInfo);
+$("#topContacts").prepend(ContactInfo);
 var ContactInfo = HTMLemail.replace("%data%", bio.contacts.email);
-$("#header #topContacts").append(ContactInfo);
+$("#topContacts").prepend(ContactInfo);
 var ContactInfo = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#header #topContacts").append(ContactInfo);
+$("#topContacts").prepend(ContactInfo);
 var ContactInfo = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-$("#header #topContacts").append(ContactInfo);
+$("#topContacts").prepend(ContactInfo);
 
 
 // print welcomeMessage
@@ -50,7 +51,7 @@ $("#footerContacts").append(ContactInfo);
 var ContactInfo = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 $("#footerContacts").append(ContactInfo);
 
-
+//print skills
 if (bio.skills.length > 0 ){
 
   $("#header").append(HTMLskillsStart );
@@ -133,60 +134,54 @@ var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.proj
 }
 
 
-//    $("#mapDiv").append(internationalizeButton);
-    //$("#mapDiv").append(googleMap);
+
+$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
+
+displayWork();
+project.display();
+
+var education = {
+"schools": [
+{
+  name: "Imam Muhammed Ibn Saud",
+  location: "Riyadh",
+  degree: "bachelor degree",
+  majors: ["Information Systems"],
+  dates: "2009-2015",
+  url: ""
+},
+{
+  name: "91 High School",
+  location: "Riyadh",
+  degree: "High School",
+  majors: ["Scinece"],
+  dates: "2006-2009",
+  url: ""
+}
+],
+"onlineCourses": [
+{
+  title: "Siebel Configration Foundation",
+  school: "Oracle",
+  dates: "Nov-2016",
+  url: "string"
+  //display: function
+},
+{
+  title: "PL/SQL Foundation",
+  school: "Oracle ",
+  dates: "Jul - 2016",
+  url: ""
+//display: function
+}
+]
+}
 /*
 
-displayWork ();
-project.display();
-var education = {
- schools: [
-   {
-     name: "Imam Muhammed Ibn Saud",
-     location: "Riyadh",
-     degree: "bachelor degree",
-     majors: ["Information Systems"],
-    dates: "2009-2015",
-    url: ""
-  },
-  {
-   name: "91 High School",
-   location: "Riyadh",
-   degree: "High School",
-   majors: ["Scinece"],
-   dates: "2006-2009",
-   url: ""
- }
- ]
-  onlineCourses:
-  [
-    {
-      title: "Siebel Configration Foundation",
-      school: "Oracle",
-      dates: "Nov-2016",
-      url: "string"
-    //display: function
-   },
-   {
-    title: "PL/SQL Foundation",
-    school: "Oracle ",
-    dates: "Jul - 2016",
-    url: ""
-  //display: function
-  }
-  ]
-};
 var education = HTMLschoolName.replace("%data%", education.shcools.name);
 $("#main").append(education);
 
-
-
-
-
-
- //$("#main").append(bio.Name);
- //$("#main").append(work["position"]);
- //$("#main").append(education.name);
  /*
  This is empty on purpose! Your code to build the resume will go here.
   */
