@@ -4,7 +4,7 @@
  var formattedName = HTMLheaderName.replace("%data%", name);
  var formattedRole = HTMLheaderRole.replace("%data%", role);
  $("#header").append(formattedName);
- $("#header").append(formattedRole)
+ $("#header").append(formattedRole);
 
  var bio = {
  name : "Hanan Saad Alharbi",
@@ -13,20 +13,43 @@
             mobile: "0537870959",
             email: "hanan.saad.h@gmail.com" ,
             github: "https://github.com/HananAlharbi",
-            twitter: "",
+            twitter: "Hanan_B_IS",
             location: "Riyadh"
           },
       welcomeMessage: "Hi , I am Hanan",
-      skills: ["Programming","Analyzing","Communication"],
+      skills: ["Programming","Analyzing","Communication","PhoneGap development"],
       biopic: "images/fry.jpg"
     //  display: function
 };
+//$("#topContacts").append(ContactInfo);
+var ContactInfo = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#header #topContacts").append(ContactInfo);
+var ContactInfo = HTMLemail.replace("%data%", bio.contacts.email);
+$("#header #topContacts").append(ContactInfo);
+var ContactInfo = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#header #topContacts").append(ContactInfo);
+var ContactInfo = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+$("#header #topContacts").append(ContactInfo);
 
+
+// print welcomeMessage
 var formattedWel = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 $("#header").append(formattedWel);
 
 var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
 $("#header").append(formattedPic);
+
+// footer contaacts
+
+var ContactInfo = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#footerContacts").append(ContactInfo);
+var ContactInfo = HTMLemail.replace("%data%", bio.contacts.email);
+$("#footerContacts").append(ContactInfo);
+var ContactInfo = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#footerContacts").append(ContactInfo);
+var ContactInfo = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+$("#footerContacts").append(ContactInfo);
+
 
 if (bio.skills.length > 0 ){
 
@@ -40,6 +63,7 @@ if (bio.skills.length > 0 ){
   formattedSkill =HTMLskills.replace("%data%",bio.skills[3]);
   $("#skills").append(formattedSkill);
 }
+
 var work = {
 jobs : [
           {
@@ -97,17 +121,24 @@ jobs : [
      };
 
      for ( proj in projects.project)
-    {
-     $("#projects").append(HTMLprojectStart);
-     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
-    var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
-    var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
-    //var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
-      $("header").append(formattedProjectTitle);
-      $("projects").append(formattedProjectDate);
-      $("projects").append(formattedProjectDes);
-    }
+{
+$("#projects").append(HTMLprojectStart);
+var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
+var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
+var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
+//var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
+ $("#projects").append(formattedProjectTitle);
+ $("#projects").append(formattedProjectDate);
+ $("#projects").append(formattedProjectDes);
+}
+
+
+//    $("#mapDiv").append(internationalizeButton);
+    //$("#mapDiv").append(googleMap);
 /*
+
+displayWork ();
+project.display();
 var education = {
  schools: [
    {
@@ -145,25 +176,14 @@ var education = {
   }
   ]
 };
-$("#main").append(education.schools);
-/*
-var work ={
-     jobs: array of objects with
-           employer: string
-           title: string
-           location: string
-           dates: string (Can be 'in progress')
-           description: string
-      display: function
-    };
-var projects = {
-  projects: array of objects with
-            title: string
-            dates: string (works with a hyphen between them)
-            description: string
-            images: array with string urls
-      display: function
-};
+var education = HTMLschoolName.replace("%data%", education.shcools.name);
+$("#main").append(education);
+
+
+
+
+
+
  //$("#main").append(bio.Name);
  //$("#main").append(work["position"]);
  //$("#main").append(education.name);
