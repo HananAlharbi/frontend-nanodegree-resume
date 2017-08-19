@@ -1,9 +1,4 @@
-var name = "Hanan Saad Alharbi";
-var role = "Siebel Software Developer";
-var formattedName = HTMLheaderName.replace("%data%", name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+
 var bio = {
     name: "Hanan Saad Alharbi",
     role: "Siebel Software Developer",
@@ -19,6 +14,11 @@ var bio = {
     biopic: "images/fry.jpg"
     //  display: function
 };
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 //$("#topContacts").append(ContactInfo);
 var ContactInfo = HTMLmobile.replace("%data%", bio.contacts.mobile);
 $("#topContacts").prepend(ContactInfo);
@@ -82,7 +82,7 @@ var work = {
 };
 
 function displayWork() {
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -115,7 +115,7 @@ var projects = {
 };
 
 function displayProject() {
-    for (proj in projects.project) {
+    for ( var proj in projects.project) {
         $("#projects").append(HTMLprojectStart);
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
         var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
@@ -172,7 +172,7 @@ var education = {
 };
 
 function displayEducation() {
-    for (school in education.schools) {
+    for ( var school in education.schools) {
         $("#education").append(HTMLschoolStart);
 
         var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -209,31 +209,4 @@ function inName(name) {
     name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
     return name[0] + " " + name[1];
 }
-//$("#header").append(internationalizeButton);
-/*
-$(document).click(function(Loc){
-    var x=Loc.pageX;
-    var y=Loc.pageY;
-
-    logClicks(x,y);
-});
-*/
 $("#mapDiv").append(googleMap);
-/*
-        education.display = function (){
-      //    for(var i =0; i < education.shcools.length; i++)
-
-           $("#education").append(HTMLschoolStart);
-           var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", shcool.major[i]);
-              $("#education-entry:last").append(HTMLschoolMajor);
-         }
-
-
-/*
-
-var education = HTMLschoolName.replace("%data%", education.shcools.name);
-$("#main").append(education);
-
- /*
- This is empty on purpose! Your code to build the resume will go here.
-  */
