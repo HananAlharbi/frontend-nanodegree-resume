@@ -95,7 +95,7 @@ function displayWork() {
         $(".work-entry:last").append(formattedDate);
         $(".work-entry:last").append(formattedDes);
     }
-};
+}
 displayWork();
 
 var projects = {
@@ -193,8 +193,8 @@ function displayEducation() {
         var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
         var formattedSchoolTitle = formattedSchool + formattedTitle;
         $(".education-entry:last").append(formattedSchoolTitle);
-        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates);
-        $(".education-entry:last").append(formattedDates);
+        var formattedDatess = HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates);
+        $(".education-entry:last").append(formattedDatess);
         var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[school].url);
         $(".education-entry:last").append(formattedURL);
     }
