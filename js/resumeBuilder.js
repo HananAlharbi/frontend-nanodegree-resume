@@ -15,6 +15,26 @@ var bio = {
     //  display: function
 };
 
+
+var work = {
+    jobs: [{
+            employer: "Systems Engineer",
+            title: "Siebel CRM Developer",
+            location: "Riyadh",
+            dates: "Apr 2016 - Present",
+            description: "Working in Siebel development as CRM developer",
+
+        },
+        {
+            employer: "Web Developer",
+            title: "Web Developer",
+            location: "Riyadh",
+            dates: "Mar 2015 - Dec 2015",
+            description: "Front end development in Imar Urban Consultant",
+        }
+    ]
+};
+bio.display = function() {
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formattedRole);
@@ -36,7 +56,9 @@ $("#header").append(formattedWel);
 
 var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
 $("#header").append(formattedPic);
+};
 
+bio.display();
 // footer contaacts
 
 var ContactInfo = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -62,24 +84,7 @@ if (bio.skills.length > 0) {
     $("#skills").append(formattedSkill);
 }
 
-var work = {
-    jobs: [{
-            employer: "Systems Engineer",
-            title: "Siebel CRM Developer",
-            location: "Riyadh",
-            dates: "Apr 2016 - Present",
-            description: "Working in Siebel development as CRM developer",
 
-        },
-        {
-            employer: "Web Developer",
-            title: "Web Developer",
-            location: "Riyadh",
-            dates: "Mar 2015 - Dec 2015",
-            description: "Front end development in Imar Urban Consultant",
-        }
-    ]
-};
 
 function displayWork() {
     for (var job in work.jobs) {
@@ -114,30 +119,6 @@ var projects = {
     ]
 };
 
-function displayProject() {
-    for ( var proj in projects.project) {
-        $("#projects").append(HTMLprojectStart);
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
-        var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
-        var formattedProjectDes = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
-        var formattedProjectImag = HTMLprojectImage.replace("%data%", projects.project[proj].images);
-        $(".project-entry:last").append(formattedProjectTitle);
-        $(".project-entry:last").append(formattedProjectDate);
-        $(".project-entry:last").append(formattedProjectDes);
-        $(".project-entry:last").append(formattedProjectImag);
-    }
-}
-displayProject();
-/*
-if(projects.projects[project].images.length > 0){
-          for (image in projects.projects[project].images){
-              var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-              $(".project-entry:last").append(formattedImage);
-          }
-      }
-      */
-//$("#main").append(internationalizeButton);
-
 var education = {
     "schools": [{
             name: "Imam Muhammed Ibn Saud",
@@ -171,6 +152,29 @@ var education = {
     ]
 };
 
+projects.display = function () {
+  for (var i = 0; i < projects.project.length; i++) {
+    $("#projects").append(HTMLprojectStart);
+
+    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[i].title);
+    $(".project-entry:last").append(formattedProjectTitle);
+
+    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.project[i].dates);
+    $(".project-entry:last").append(formattedProjectDates);
+
+    var formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.project[i].description);
+    $(".project-entry:last").append(formattedProjectDescription);
+
+    if (projects.project[i].images.length > 0) {
+      for (image in projects.project[i].images) {
+        var formattedImages = HTMLprojectImage.replace("%data%", projects.project[i].images[image]);
+        $(".project-entry:last").append(formattedImages);
+      }
+    }
+  }
+};
+projects.display();
+
 function displayEducation() {
     for ( var school in education.schools) {
         $("#education").append(HTMLschoolStart);
@@ -184,7 +188,7 @@ function displayEducation() {
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
         $(".education-entry:last").append(formattedMajor);
     }
-  // $("#education").prepend(HTMLonlineClasses);$("#education").append(HTMLonlineClasses);
+
 
     $("#education").append(HTMLonlineClasses);
     $("#education").append(HTMLschoolStart);
@@ -199,6 +203,7 @@ function displayEducation() {
         $(".education-entry:last").append(formattedURL);
     }
 }
+
 displayEducation();
 
 
