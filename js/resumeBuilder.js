@@ -118,7 +118,7 @@ displayWork();
          }
        ]
      };
-
+function displayProject() {
      for ( proj in projects.project)
      {
      $("#projects").append(HTMLprojectStart);
@@ -131,7 +131,8 @@ displayWork();
       $(".project-entry:last").append(formattedProjectDes);
       $(".project-entry:last").append(formattedProjectImag);
      }
-
+}
+displayProject();
   /*
   if(projects.projects[project].images.length > 0){
             for (image in projects.projects[project].images){
@@ -141,14 +142,14 @@ displayWork();
         }
         */
 //$("#main").append(internationalizeButton);
-$("#mapDiv").append(googleMap);
+
 var education = {
            "schools": [
         {
           name: "Imam Muhammed Ibn Saud",
           location: "Riyadh",
           degree: "bachelor degree",
-          majors: ["Information Systems"],
+          major: ["Information Systems"],
           dates: "2009-2015",
           url: ""
         },
@@ -156,7 +157,7 @@ var education = {
           name: "91 High School",
           location: "Riyadh",
           degree: "High School",
-          majors: ["Scinece"],
+          major: ["Scinece"],
           dates: "2006-2009",
           url: ""
         }
@@ -178,6 +179,32 @@ var education = {
         }
         ]
         }
+function displayEducation (){
+  for (school in education.schools){
+    $("#education").append(HTMLschoolStart);
+
+    var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+    var formattedDeg = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+    var formattedNameDeg = formattedName + formattedDeg;
+    $(".education-entry:last").append(formattedNameDeg);
+    var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+    $(".education-entry:last").append(formattedDates);
+    var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+    $(".education-entry:last").append(formattedMajor);
+  }
+  for ( school in education.onlineCourses){
+      var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses.title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses.school);
+      var formattedSchoolTitle = formattedSchool + formattedTitle;
+      $(".education-entry:last").append(formattedSchoolTitle);
+      var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses.dates);
+      $(".education-entry:last").append(formattedDates);
+      var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses.url);
+      $(".education-entry:last").append(formattedURL);
+  }
+}
+displayEducation();
+
 
   function inName(name){
     name = name.trim().split(" ");
@@ -194,7 +221,7 @@ $(document).click(function(Loc){
 
     logClicks(x,y);
 });
-
+$("#mapDiv").append(googleMap);
 /*
         education.display = function (){
       //    for(var i =0; i < education.shcools.length; i++)
