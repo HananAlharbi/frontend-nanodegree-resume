@@ -108,10 +108,7 @@ function initializeMap() {
 
   var mapOptions = {
     disableDefaultUI: true,
-    center: {
-    //  lat: 24.7043004,
-    //  lng: 46.6803644
-    },
+  
     zoom: 8
   };
 
